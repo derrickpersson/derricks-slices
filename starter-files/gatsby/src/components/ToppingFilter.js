@@ -54,15 +54,8 @@ const ToppingsFilter = () => {
   // count how many pizza in each topping
   // loop over list of topping and display ...
 
-  const { toppings, pizzas } = useStaticQuery(graphql`
+  const { pizzas } = useStaticQuery(graphql`
     query {
-      toppings: allSanityTopping {
-        nodes {
-          name
-          id
-          vegetarian
-        }
-      }
       pizzas: allSanityPizza {
         nodes {
           toppings {
