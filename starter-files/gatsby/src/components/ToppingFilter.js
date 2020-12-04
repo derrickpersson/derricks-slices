@@ -19,7 +19,7 @@ const ToppingsStyles = styled.div`
       background: white;
       padding: 2px 5px;
     }
-    .active {
+    &[aria-current='page'] {
       background: var(--yellow);
     }
   }
@@ -48,7 +48,7 @@ const countPizzasInToppings = (pizzas) => {
   return sortedToppings;
 };
 
-const ToppingsFilter = () => {
+const ToppingsFilter = ({ activeTopping }) => {
   // Get list of all toppings
   // get list of all pizzas with their toppings
   // count how many pizza in each topping
@@ -68,9 +68,12 @@ const ToppingsFilter = () => {
   `);
 
   const toppingsWithCounts = countPizzasInToppings(pizzas.nodes);
-
   return (
     <ToppingsStyles>
+      <Link to="/pizzas">
+        <span className="name">All</span>
+        <span className="count">{pizzas.nodes.length}</span>
+      </Link>
       {toppingsWithCounts.map((topping) => (
         <Link key={topping.id} to={`/topping/${topping.name}`}>
           <span className="name">{topping.name}</span>
