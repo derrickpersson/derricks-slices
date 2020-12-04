@@ -31,7 +31,6 @@ const Pagination = ({ pageSize, totalCount, currentPage, skip, base }) => {
   const totalPages = Math.ceil(totalCount / pageSize);
   const prevPage = currentPage - 1;
   const nextPage = currentPage + 1;
-  console.log('TotalPages: ', totalPages);
   const hasNextPage = nextPage <= totalPages;
   const hasPrevPage = prevPage > 1;
 
@@ -42,6 +41,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, skip, base }) => {
       </Link>
       {Array.from({ length: totalPages }).map((_, i) => (
         <Link
+          key={i}
           className={currentPage === 1 && i === 0 ? 'current' : ''}
           to={`${base}/${i > 0 ? i + 1 : ''}`}
         >
