@@ -1,10 +1,11 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
+import SEO from '../components/SEO';
 
-const SlicemasterPage = ({ data, pageContext: { slicemaster } }) => {
-  console.log('Slicemaster: ', data);
-  return (
+const SlicemasterPage = ({ data, pageContext: { slicemaster } }) => (
+  <>
+    <SEO title={slicemaster.name} />
     <div className="center">
       <Img fluid={data.slicemaster.image.asset.fluid} alt={slicemaster.name} />
       <h2>
@@ -12,8 +13,8 @@ const SlicemasterPage = ({ data, pageContext: { slicemaster } }) => {
       </h2>
       <p>{data.slicemaster.description}</p>
     </div>
-  );
-};
+  </>
+);
 
 export const query = graphql`
   query($slicemasterId: String) {
