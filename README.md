@@ -9,3 +9,19 @@ This site is based off of the course Master Gatsby by Wes Bos.
 - Gatsby Frontend
 - Sanity Backend
 - Serverless functions
+
+### Getting Started - Gatsby
+
+`npm install`
+
+`cp .env.example .env`
+
+Fill out .env file
+
+`npm run start`
+
+### Getting Started - Sanity
+
+`npm install`
+
+`npm run start`
