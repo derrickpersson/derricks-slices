@@ -49,7 +49,7 @@ const LogoStyles = styled.div`
     perspective: 100px;
   }
   .letter {
-    font-size: 5em;
+    font-size: 3em;
     color: var(--red);
     --scale: 1;
     --rotate: -10deg;
@@ -62,18 +62,34 @@ const LogoStyles = styled.div`
     display: inline-block;
     line-height: 1;
     transition: transform 0.3s;
-    &.S {
+    &.d {
+      font-size: 4em;
+      --scale: 1.7;
       --translateX: -0.05;
+      --translateY: -1;
     }
-    &.l {
-      --rotate: 2deg;
-      --scale: 1.4;
+    &.e {
+      --rotate: 5deg;
+      --scale: 0.9;
       --translateX: 0.05em;
-      --translateY: -0.05em;
+      --translateY: -0.25em;
+    }
+    &.r {
+      --scale: 0.9;
+      --rotate: 2deg;
+      --translateY: 0.05em;
+      --translateX: 0.1em;
+    }
+    &.second-r {
+      --scale: 1.1;
+      --rotate: 10deg;
+      --translateY: -0.1em;
+      --translateX: 0.1em;
     }
     &.i {
-      --scale: 0.9;
-      --translateY: -0.1em;
+      --scale: 0.8;
+      --rotate: -2deg;
+      --translateY: -0.25em;
       --translateX: 0.1em;
     }
     &.c {
@@ -105,8 +121,10 @@ export default function Logo() {
         <span className="est">EST 1994</span>
         <h1>
           <span className="slicks">
-            <span className="letter S">S</span>
-            <span className="letter l">l</span>
+            <span className="letter d">D</span>
+            <span className="letter e">e</span>
+            <span className="letter r">r</span>
+            <span className="letter second-r">r</span>
             <span className="letter i">i</span>
             <span className="letter c">c</span>
             <span className="letter k">k</span>
