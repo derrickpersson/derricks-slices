@@ -9,7 +9,7 @@ const PizzaOrder = ({ order, pizzas, removeFromOrder }) => (
     {order.map((singleOrder, idx) => {
       const pizza = pizzas.find((za) => za.id === singleOrder.id);
       return (
-        <MenuItemStyles>
+        <MenuItemStyles key={`${pizza.id}-${idx}`}>
           <Img fluid={pizza.image.asset.fluid} alt={pizza.name} />
           <h2>{pizza.name}</h2>
           <p>

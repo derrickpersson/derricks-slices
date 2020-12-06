@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import React from 'react';
+import React, { useContext } from 'react';
 import Img from 'gatsby-image';
 import SEO from '../components/SEO';
 import useForm from '../utils/useForm';
@@ -15,17 +15,30 @@ const OrderPage = ({ data }) => {
   const { values, updateValue } = useForm({
     name: '',
     email: '',
+    mapleSyrup: '',
   });
-  const { order, addToOrder, removeFromOrder } = usePizza({
+  const {
+    order,
+    addToOrder,
+    removeFromOrder,
+    loading,
+    error,
+    message,
+    submitOrder,
+  } = usePizza({
     pizzas: data.pizzas.nodes,
-    inputs: values,
+    values,
   });
+
+  if (message) {
+    return <p>{message}</p>;
+  }
 
   return (
     <div>
       <SEO title="Order a Pizza!" />
-      <OrderStyles>
-        <fieldset>
+      <OrderStyles onSubmit={submitOrder}>
+        <fieldset disabled={loading}>
           <legend>Your Info</legend>
           <label htmlFor="name">
             Name
@@ -47,6 +60,15 @@ const OrderPage = ({ data }) => {
               onChange={updateValue}
             />
           </label>
+
+          <input
+            id="mapleSyrup"
+            type="mapleSyrup"
+            name="mapleSyrup"
+            value={values.mapleSyrup}
+            onChange={updateValue}
+            className="mapleSyrup"
+          />
         </fieldset>
         <fieldset className="menu">
           <legend>Menu</legend>
@@ -64,6 +86,7 @@ const OrderPage = ({ data }) => {
               <div>
                 {['S', 'M', 'L'].map((size) => (
                   <button
+                    key={`${za.id}-${size}`}
                     type="button"
                     onClick={() =>
                       addToOrder({
@@ -79,7 +102,7 @@ const OrderPage = ({ data }) => {
             </MenuItemStyles>
           ))}
         </fieldset>
-        <fieldset className="order">
+        <fieldset className="order" disabled={loading}>
           <legend>Order</legend>
           <PizzaOrder
             pizzas={data.pizzas.nodes}
@@ -87,11 +110,15 @@ const OrderPage = ({ data }) => {
             order={order}
           />
         </fieldset>
-        <fieldset>
+        <fieldset disabled={loading}>
           <h3>
             Your order total is:{' '}
             {formatMoney(calcOrderTotal(data.pizzas.nodes, order))}
           </h3>
+          <div>{error ? <p>Error: {error}</p> : null}</div>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Placing Order...' : 'Order Ahead'}
+          </button>
         </fieldset>
       </OrderStyles>
     </div>
