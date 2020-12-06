@@ -32,7 +32,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, skip, base }) => {
   const prevPage = currentPage - 1;
   const nextPage = currentPage + 1;
   const hasNextPage = nextPage <= totalPages;
-  const hasPrevPage = prevPage > 1;
+  const hasPrevPage = prevPage >= 1;
 
   return (
     <PaginationStyles>
