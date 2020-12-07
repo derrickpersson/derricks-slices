@@ -47,7 +47,9 @@ const usePizza = ({ pizzas, values }) => {
       setError(text.message);
     } else {
       setLoading(false);
-      setMessage(`Success! You're pizza is ordered!`);
+      setMessage(
+        `Success! If this was a real restaurant your pizza would be ordered!`
+      );
     }
   };
 

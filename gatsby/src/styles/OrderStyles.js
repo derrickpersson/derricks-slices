@@ -12,6 +12,14 @@ const OrderStyles = styled.form`
     display: grid;
     gap: 1rem;
     align-content: start;
+    label {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+    label + label {
+      margin-top: 1rem;
+    }
     /* If it's order or menu, only span a single column */
     &.order,
     &.menu {

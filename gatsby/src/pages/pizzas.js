@@ -6,7 +6,6 @@ import ToppingsFilter from '../components/ToppingFilter';
 
 const PizzasPage = ({ data, pageContext }) => {
   const pizzas = data.pizzas.nodes;
-  //   console.log('Topping: ', topping);
   return (
     <>
       <SEO
